@@ -21,7 +21,7 @@ const NewExpenseForm = () => {
       amount: enteredAmount,
     };
 
-    console.log(expenseData);
+    console.log(expenseData); // will log the expenseData
     setEnteredAmount("");
     setEnteredDate("");
     setEnteredTitle("");
