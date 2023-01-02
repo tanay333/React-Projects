@@ -1,9 +1,18 @@
 import ExpenseItem from "./components/Expenseitem-component/ExpenseItem";
 import Card from "./components/Card/Card-component";
 import NewExpense from "./components/NewExpense/NewExpense-component";
+import { useState } from "react";
 
 function App() {
-  const expenses = [
+  const newExpenseHandler = (newExpense) => {
+    setExpenseState((prevState) => {
+      return [...prevState, newExpense];
+    });
+
+    // console.log(expenses);
+  };
+
+  const [expenses, setExpenseState] = useState([
     {
       id: "e1",
       title: "Toilet Paper",
@@ -23,10 +32,11 @@ function App() {
       amount: 450,
       date: new Date(2021, 5, 12),
     },
-  ];
+  ]);
+
   return (
     <Card>
-      <NewExpense />
+      <NewExpense onNewExpense={newExpenseHandler} />
       {expenses.map((item) => (
         <ExpenseItem key={item.id} item={item} />
       ))}
